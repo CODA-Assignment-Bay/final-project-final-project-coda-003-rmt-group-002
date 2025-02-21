@@ -67,7 +67,6 @@ Setelah itu, buat file airflow DAG yang berisikan flow kerja dari pipeline yang 
             schedule_interval='10-30/10 9 * * 6',
             catchup = False,
             ) as dag:
-            ```
 
     # Sesuaikan task-task apa saja yang akan dilakukan serta path ke file yang digunakan
 
