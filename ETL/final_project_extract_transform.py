@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Fungsi untuk melakukan ekstrak data
 def extract_dataset(path_dd, path_gdp):
     
     df_disease = pd.read_csv(path_dd)
@@ -9,6 +10,9 @@ def extract_dataset(path_dd, path_gdp):
 
 def transform_dataset(df_disease, df_gdp):
     
+    # Data cleaning ringan
+    
+    # Sesuaikan dengan kebutuhan dataset, tidak semua dataset harus melakukan apa yang dilakukan di file ini
     df_disease = df_disease.query("2009 < Year < 2023")
     df_disease = df_disease.drop(columns=["Availability of Vaccines/Treatment", "Improvement in 5 Years (%)", "Disease Category", "DALYs", "Urbanization Rate (%)"])
     df_disease = df_disease.rename(columns={"Country":"country", "Year":"year", "Disease Name":"disease_name", 
@@ -29,9 +33,12 @@ def transform_dataset(df_disease, df_gdp):
     final_df = merged_df.merge(temp_df, on=["country", 'trtmt_type', 'disease_name', 'gender', 'year', 'age_group', 'ppl_affected'])
  
     return final_df
-    
+
+# Seusaikan file path
 df_disease, df_gdp = extract_dataset("/opt/airflow/Datasets/Global Health Statistics.csv", "/opt/airflow/Datasets/gdp-per-capita-maddison-project-database.csv")
 final_df = transform_dataset(df_disease, df_gdp)
+
+# Sesuaikan path output untuk file
 final_df.to_csv("/opt/airflow/Datasets/data_formated.csv")
 
 
