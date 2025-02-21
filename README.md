@@ -52,8 +52,7 @@ Pada projek ini, kami menggunakan mongoDB sebagai database kami.
 Pipeline pada projek ini berfungsi untuk melakukan penjadwalan sehingga proses ETL akan dilakukan secara otomatis sesuai yang sudah dijadwalkan.
 Simpan semua file extract, transform, load, dan load mongo to sheet yang sudah kalian buat ke dalam folder dag airflow yang ada di pc/laptop kalian.
 Setelah itu, buat file airflow DAG yang berisikan flow kerja dari pipeline yang kalian inginkan, seperti di file Airflowfinalproject_pipeline.py. Contoh:
-
-    ```py
+```py
     # Sesuaikan semua parameter default_args dengan kebutuhan
     default_args = {
         'owner': 'adam',
@@ -77,7 +76,7 @@ Setelah itu, buat file airflow DAG yang berisikan flow kerja dari pipeline yang 
     load_to_sheet = BashOperator(task_id='load_to_sheet', bash_command='python /opt/airflow/ETL/mongo_to_sheet.py')
 
     get_FP_data >> load_FP_data >> load_to_sheet
-    ```
+```
 
 ### 6. Load to Spreadsheet
 
