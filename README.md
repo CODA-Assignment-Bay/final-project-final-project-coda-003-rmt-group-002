@@ -3,7 +3,7 @@
 ## Final Project's Presentation Link
 https://www.canva.com/design/DAGfne1kSo8/cPyEMq0U8seNPEUH3KTmHQ/edit?utm_content=DAGfne1kSo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-##**Link Looker **
+## Dashboard Link
 https://lookerstudio.google.com/reporting/b59af51c-6251-40fc-8857-4559e907130d
 
 ## Dataset links
