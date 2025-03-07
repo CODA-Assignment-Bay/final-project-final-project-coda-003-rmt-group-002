@@ -115,3 +115,6 @@ Salah satu caranya adalah mengupload datanya ke spreadsheet, menggunakan spreads
    ```
 
 Setelah melakukan setup spreadsheet, ikuti fungsi-fungsi yang ada di file mongo_to_sheet.py untuk melakukan upload ke spreadsheet.
+
+
+Link Looker https://lookerstudio.google.com/reporting/b59af51c-6251-40fc-8857-4559e907130d
