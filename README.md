@@ -3,6 +3,9 @@
 ## Final Project's Presentation Link
 https://www.canva.com/design/DAGfne1kSo8/cPyEMq0U8seNPEUH3KTmHQ/edit?utm_content=DAGfne1kSo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
+##**Link Looker **
+https://lookerstudio.google.com/reporting/b59af51c-6251-40fc-8857-4559e907130d
+
 ## Dataset links
 
 GDP per capita: https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database?tab=table&time=2000..latest
@@ -117,4 +120,4 @@ Salah satu caranya adalah mengupload datanya ke spreadsheet, menggunakan spreads
 Setelah melakukan setup spreadsheet, ikuti fungsi-fungsi yang ada di file mongo_to_sheet.py untuk melakukan upload ke spreadsheet.
 
 
-Link Looker https://lookerstudio.google.com/reporting/b59af51c-6251-40fc-8857-4559e907130d
+
