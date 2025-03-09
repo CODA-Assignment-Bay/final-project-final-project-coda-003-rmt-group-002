@@ -1,5 +1,7 @@
 # Global Disease Statistic
 
+This project analyzes and explores the relationship between disease prevalence, healthcare infrastructure, and economic conditions across various countries. The goal is to provide insights into how income levels, education, and access to healthcare services influence disease severity and mortality rates.
+
 ## Final Project's Presentation Link
 https://www.canva.com/design/DAGfne1kSo8/cPyEMq0U8seNPEUH3KTmHQ/edit?utm_content=DAGfne1kSo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
