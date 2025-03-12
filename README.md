@@ -16,39 +16,37 @@ Global Health Statistic: https://www.kaggle.com/code/kirixaki/global-health-stat
 
 ## Data Pipeline Architecture
 
-Pipeline data berfungsi untuk melakukan otomasi proses pengambilan data, transform data, load data ke database, dan upload data ke spreadsheet.
+The data pipeline automates the process of data extraction, transformation, loading into a database, and uploading to a spreadsheet.
 
 ## Step by step To Build The Pipeline
 
 ### 1. Extract Dataset Yang Digunakan
 
-Cari dataset yang akan digunakan untuk dimasukkan ke dalam pipeline, bisa berupa dari API, file csv, dan lain-lain. Tapi untuk projek ini, kami menggunakan file csv.
-Selanjutnya buat script python seperti pada file final_project_extract_transform.py yang ada di folder ETL. Buat fungsi untuk mengekstrak dataset.
+Select the dataset to be included in the pipeline, which can be from APIs, CSV files, etc. For this project, we use CSV files.
+Create a Python script as seen in final_project_extract_transform.py in the ETL folder. Develop a function to extract the dataset.
 
 ### 2. Lakukan Explorasi Ringan Pada Dataset
 
-Cek isi data, tipe-tipe data, dll yang sekiranya diperlukan dan lakukan data cleaning ringan agar dataset dapat dianalisis.
-Kalian juga dapat menggunakan GreatExpectations untuk melakukan validasi data sesuai kebutuhan, seperti pada file fp_gx.ipynb
+Check the dataset’s content, data types, and perform basic cleaning to ensure analysis readiness. You can use Great Expectations for data validation, as demonstrated in fp_gx.ipynb.
 
 ### 3. Transform Dataset
 
-Transform data sesuai kebutuhan, seperti mengubah tipe data, mengubah nama kolom menjadi snake case, ataupun menggabungkan dataset.
-Contoh pembuatan fungsi untuk transform data ada pada file final_project_extract_transform.py.
+Transform the dataset as needed, such as changing data types, renaming columns to snake_case, or merging datasets. 
+Example functions for data transformation can be found in final_project_extract_transform.py.
 
 ### 4. Load Dataset
 
-Setelah dataset sudah siap diload, buat fungsi untuk melakukan load dataset ke RDBMS atau database lain.
-Pada projek ini, kami menggunakan mongoDB sebagai database kami.
+Once the dataset is ready, create functions to load it into an RDBMS or other databases. In this project, we use MongoDB.
 
 #### How to Setup MongoDB
 
-1. Buat akun mongoDB di website: https://cloud.mongodb.com/v2
-2. Setelah buat akun, pergi ke tab cluster di website tersebut, lalu pilih buat cluster baru dengan konfigurasi gratis dan gunakan google cloud services.
-3. Setelah itu, pergi ke tab cluster lagi, dan pilih connect -> compass. Di bagian ini akan muncul link yang akan digunakan untuk membuat koneksi ke mongoDB yang nantinya akan digunakan dalam file python/ipynb.
-4. Pindah ke tab Quickstart dan scroll ke bawah hingga menemukan bagian untuk memasukkan IP Address. masukan entry baru dengan IP 0.0.0.0 agar semua IP address bisa mengakses database tersebut.
-5. Di bagian atas tab Quickstart, buatlah username baru dan password, yang nantinya digunakan untuk mengisi link yang mengkoneksikan database.
-6. Download mongoDB compass: https://www.mongodb.com/try/download/compass untuk melakukan monitoring database kalian. Masukkan link koneksi cluster kalian saat ingin membuat databse di mongoDB compass.
-7. Ikuti script di file final_project_extract_load.py dan ubah link pengkoneksian ke mongoDB, nama database, dan nama collectionnya. Contoh:
+1. Create a MongoDB account at https://cloud.mongodb.com/v2
+2. Go to the Clusters tab and create a new free cluster using Google Cloud services.
+3. In the Clusters tab, select Connect → Compass. Copy the connection link for use in Python/IPython files.
+4. Under the Quickstart tab, scroll down to enter an IP Address. Add 0.0.0.0 to allow all IPs to access the database.
+5. At the top of the Quickstart tab, create a new username and password to connect to the database.
+6. Download mongoDB compass: https://www.mongodb.com/try/download/compass to monitor your database.
+7. Modify the connection script in final_project_extract_load.py with the correct MongoDB URI, database, and collection name. Example:
    ```py
     client = MongoClient("mongodb+srv://admin:admin@adams-playground4.s8xqk.mongodb.net/?serverSelectionTimeoutMS=5000")
     database = client["final_project_CODA_003_group_002"]
@@ -57,9 +55,9 @@ Pada projek ini, kami menggunakan mongoDB sebagai database kami.
 
 ### 5. Membuat Pipeline
 
-Pipeline pada projek ini berfungsi untuk melakukan penjadwalan sehingga proses ETL akan dilakukan secara otomatis sesuai yang sudah dijadwalkan.
-Simpan semua file extract, transform, load, dan load mongo to sheet yang sudah kalian buat ke dalam folder dag airflow yang ada di pc/laptop kalian.
-Setelah itu, buat file airflow DAG yang berisikan flow kerja dari pipeline yang kalian inginkan, seperti di file Airflowfinalproject_pipeline.py. Contoh:
+The pipeline schedules and automates the ETL process.
+Store all extract, transform, and load scripts inside the dag airflow folder on your local machine.
+Then, create an Airflow DAG file to define the pipeline workflow as seen in Airflowfinalproject_pipeline.py. Example:
 ```py
     # Sesuaikan semua parameter default_args dengan kebutuhan
     default_args = {
@@ -88,20 +86,20 @@ Setelah itu, buat file airflow DAG yang berisikan flow kerja dari pipeline yang 
 
 ### 6. Load to Spreadsheet
 
-Ketika data sudah berhasil diload ke mongo, selanjutnya kita akan membuat datamart yang dapat diakses untuk proses analisis secara otomatis.
-Salah satu caranya adalah mengupload datanya ke spreadsheet, menggunakan spreadsheet API.
+Once data is successfully loaded into MongoDB, create a data mart that can be accessed for automated analysis.
+One way to do this is by uploading data to a Google Spreadsheet using the Google Sheets API.
 
 #### How to Setup Spreadsheet
 
-1. Buka link: https://console.cloud.google.com/marketplace/product/google/sheets.googleapis.com dan klik enable.
-2. Setelah itu, klik manage untuk mengatur API.
-3. Pilih tab credentials, dan buat service account.
-4. Setelah itu, copy email dari service account yang sudah dibuat.
-5. Buat spreadsheet baru, dan share access ke email yang sudah dibuat sebelumnya.
-6. Pergi ke tab credentials lagi, dan klik email yang sudah dibuat.
-7. Selanjutnya pergi ke tab keys, dan pilih add key dan create new key, setelah itu download key tersebut.
-8. Buat file python untuk mengupload data mongoDB ke spreadsheet, seperti file mongo_to_sheet.py.
-9. Buat koneksi dengan mongoDB dan spreadsheet, Contoh:
+1. Open this link: https://console.cloud.google.com/marketplace/product/google/sheets.googleapis.com and enable it.
+2. Click Manage to configure the API.
+3. Navigate to the Credentials tab and create a new Service Account.
+4. Copy the service account email.
+5. Create a new Google Spreadsheet and share access with the copied email.
+6. In the Credentials tab, click on the service account email.
+7. Go to the Keys tab, select Add Key, and download the generated key file.
+8. Create a Python script to upload MongoDB data to Google Sheets, as shown in mongo_to_sheet.py.
+9. Establish connections to MongoDB and Google Sheets. Example:
 
    ```py
     # Membuat koneksi ke mongoDB
@@ -119,7 +117,7 @@ Salah satu caranya adalah mengupload datanya ke spreadsheet, menggunakan spreads
     RANGE_NAME = "raw_data!A:Z"
    ```
 
-Setelah melakukan setup spreadsheet, ikuti fungsi-fungsi yang ada di file mongo_to_sheet.py untuk melakukan upload ke spreadsheet.
+After setting up the Google Sheets API, follow the functions in mongo_to_sheet.py to upload the data to Google Sheets automatically.
 
 
 
