@@ -14,6 +14,15 @@ GDP per capita: https://ourworldindata.org/grapher/gdp-per-capita-maddison-proje
 
 Global Health Statistic: https://www.kaggle.com/code/kirixaki/global-health-statistics-analysis
 
+## Tools
+
+- Looker Studio
+- Spreadsheet API
+- MongoDB
+- Apache Airflow
+- Pandas
+- Python
+
 ## Data Pipeline Architecture
 
 The data pipeline automates the process of data extraction, transformation, loading into a database, and uploading to a spreadsheet.
