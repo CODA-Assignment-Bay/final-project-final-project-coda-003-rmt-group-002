@@ -20,21 +20,21 @@ The data pipeline automates the process of data extraction, transformation, load
 
 ## Step by step To Build The Pipeline
 
-### 1. Extract Dataset Yang Digunakan
+### 1. Extract the Dataset
 
 Select the dataset to be included in the pipeline, which can be from APIs, CSV files, etc. For this project, we use CSV files.
 Create a Python script as seen in final_project_extract_transform.py in the ETL folder. Develop a function to extract the dataset.
 
-### 2. Lakukan Explorasi Ringan Pada Dataset
+### 2. Perform Initial Data Exploration
 
 Check the dataset’s content, data types, and perform basic cleaning to ensure analysis readiness. You can use Great Expectations for data validation, as demonstrated in fp_gx.ipynb.
 
-### 3. Transform Dataset
+### 3. Transform the Dataset
 
 Transform the dataset as needed, such as changing data types, renaming columns to snake_case, or merging datasets. 
 Example functions for data transformation can be found in final_project_extract_transform.py.
 
-### 4. Load Dataset
+### 4. Load the Dataset
 
 Once the dataset is ready, create functions to load it into an RDBMS or other databases. In this project, we use MongoDB.
 
@@ -53,7 +53,7 @@ Once the dataset is ready, create functions to load it into an RDBMS or other da
     my_collection = database["Data-coll"]
    ```
 
-### 5. Membuat Pipeline
+### 5. Creating the Data Pipeline
 
 The pipeline schedules and automates the ETL process.
 Store all extract, transform, and load scripts inside the dag airflow folder on your local machine.
